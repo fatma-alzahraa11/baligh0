@@ -35,7 +35,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-25">
           <div className="flex items-center space-x-2 cursor-pointer" onClick={() => handleNavigation('chatnow')}>
-            <img src="src/images/logo.png" alt="Logo" className="h-24 w-auto" />
+            <img src="/images/logo.png" alt="Logo" className="h-24 w-auto" />
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
