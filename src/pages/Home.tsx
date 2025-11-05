@@ -150,7 +150,7 @@ export default function Home({ onNavigate }: HomeProps) {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-brandBlue to-brandGold">
         <div className="absolute inset-0 opacity-100">
           <img 
-            src="src/images/hero.jpeg" 
+            src="/images/hero.jpeg" 
             alt="Background" 
             className="w-full h-full object-cover blur-sm"
           />
@@ -265,7 +265,7 @@ export default function Home({ onNavigate }: HomeProps) {
       <section className="relative py-20 text-white overflow-hidden rounded-3xl mx-4 sm:mx-6 lg:mx-8" data-aos="fade-up">
         <div className="absolute inset-0">
           <img 
-            src="src/images/mostpopular.jpeg" 
+            src="/images/mostpopular.jpeg" 
             alt="Background" 
             className="w-full h-full object-cover"
           />
@@ -384,7 +384,7 @@ export default function Home({ onNavigate }: HomeProps) {
       <section className="relative py-20 text-white overflow-hidden rounded-3xl mx-4 sm:mx-6 lg:mx-8" data-aos="fade-up">
         <div className="absolute inset-0">
           <img 
-            src="src/images/mostpopular.jpeg" 
+            src="/images/mostpopular.jpeg" 
             alt="Background" 
             className="w-full h-full object-cover"
           />
