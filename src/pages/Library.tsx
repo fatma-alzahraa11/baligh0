@@ -129,7 +129,7 @@ export default function Library() {
             className={className}
           />
         ) : (
-          <img src={poster || 'src/images/hero2.jpg'} alt="preview" className={className} loading="lazy" />
+          <img src={poster || '/images/hero2.jpg'} alt="preview" className={className} loading="lazy" />
         )}
       </div>
     );
@@ -182,7 +182,7 @@ export default function Library() {
     <div className="min-h-screen bg-gray-50 pt-24">
       <div className="relative text-white py-16 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="src/images/hero2.jpg" alt="Background" className="w-full h-full object-cover" loading="lazy" />
+          <img src="/images/hero2.jpg" alt="Background" className="w-full h-full object-cover" loading="lazy" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-br from-brandBlue/90 to-brandGold/90"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
