@@ -1,13 +1,17 @@
 import {Mail, MapPin, Phone } from 'lucide-react';
 
-export default function Footer() {
+interface FooterProps {
+  onNavigate?: (page: string) => void;
+}
+
+export default function Footer({ onNavigate }: FooterProps) {
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <img src="src/images/logo2.jpeg" alt="Logo" className="h-24 w-auto" />
+              <img src="/images/logo2.jpeg" alt="Logo" className="h-24 w-auto" />
             </div>
             <p className="text-sm">
               Your trusted source for authentic Islamic knowledge and guidance.
@@ -17,10 +21,24 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-brandGold transition-colors">Home</a></li>
-              <li><a href="#" className="hover:text-brandGold transition-colors">Questions</a></li>
-              <li><a href="#" className="hover:text-brandGold transition-colors">Library</a></li>
-              <li><a href="#" className="hover:text-brandGold transition-colors">About Us</a></li>
+              <li>
+                <button onClick={() => onNavigate?.('home')} className="hover:text-brandGold transition-colors">Home</button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate?.('questions')} className="hover:text-brandGold transition-colors">Questions</button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate?.('library')} className="hover:text-brandGold transition-colors">Library</button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate?.('about')} className="hover:text-brandGold transition-colors">About Us</button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate?.('contact')} className="hover:text-brandGold transition-colors">Contact Us</button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate?.('volunteer')} className="hover:text-brandGold transition-colors">Volunteer</button>
+              </li>
             </ul>
           </div>
 
