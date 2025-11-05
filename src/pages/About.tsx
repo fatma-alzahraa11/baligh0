@@ -1,4 +1,4 @@
-import { Target, Heart, Users, Award, BookOpen, Globe } from 'lucide-react';
+import { Target, Heart, Users, Award, BookOpen, Globe, Eye } from 'lucide-react';
 
 export default function About() {
   const values = [
@@ -24,34 +24,13 @@ export default function About() {
     },
   ];
 
-  const team = [
-    {
-      name: 'Dr. Ahmed Hassan',
-      role: 'Islamic Scholar',
-      description: 'PhD in Islamic Studies from Al-Azhar University',
-    },
-    {
-      name: 'Fatima Al-Rahman',
-      role: 'Content Director',
-      description: 'Expert in Islamic education and curriculum development',
-    },
-    {
-      name: 'Sheikh Omar Ibrahim',
-      role: 'Religious Advisor',
-      description: 'Certified Imam with 20+ years of experience',
-    },
-    {
-      name: 'Aisha Mohammed',
-      role: 'Community Manager',
-      description: 'Dedicated to building connections and supporting learners',
-    },
-  ];
+  
 
   return (
     <div className="min-h-screen bg-gray-50 pt-24">
       <div className="relative text-white py-16 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="src/images/hero2.jpg" alt="Background" className="w-full h-full object-cover" />
+          <img src="/images/hero2.jpg" alt="Background" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-br from-brandBlue/90 to-brandGold/90"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,6 +42,22 @@ export default function About() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section className="mb-16">
+          <div className="bg-white rounded-xl shadow-md p-8 md:p-12">
+            <div className="flex items-center gap-3 mb-6">
+              <Eye className="h-8 w-8 text-brandGold" />
+              <h2 className="text-3xl font-bold text-gray-800">Our Vision</h2>
+            </div>
+            <p className="text-lg text-gray-700 leading-relaxed mb-6">
+              To be a trusted, global destination for authentic Islamic knowledge that
+              enlightens hearts, strengthens faith, and inspires positive action.
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              We envision a world where everyone can access reliable Islamic guidance
+              with clarity and confidence, anytime and anywhere.
+            </p>
+          </div>
+        </section>
         <section className="mb-16">
           <div className="bg-white rounded-xl shadow-md p-8 md:p-12">
             <div className="flex items-center gap-3 mb-6">
@@ -160,26 +155,7 @@ export default function About() {
           </div>
         </section>
 
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Our Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-shadow"
-              >
-                <div className="w-24 h-24 bg-gradient-to-br from-brandBlue/60 to-brandBlue rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-3xl font-bold text-white">
-                    {member.name.charAt(0)}
-                  </span>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-1">{member.name}</h3>
-                <p className="text-brandBlue font-medium mb-2">{member.role}</p>
-                <p className="text-gray-600 text-sm">{member.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        
 
         <section>
           <div className="bg-white rounded-xl shadow-md p-8 md:p-12 text-center">
