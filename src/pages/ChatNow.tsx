@@ -19,43 +19,43 @@ export default function ChatNow() {
       id: 1,
       title: 'Introduction',
       content: 'Welcome to a welcoming space for exploring Islam through live chat. Whether you\'re curious about the faith, considering conversion, or seeking to learn more, our platform provides a supportive environment for your journey.',
-      image: 'src/images/hero.jpeg'
+      image: '/images/hero.jpeg'
     },
     {
       id: 2,
       title: 'Understanding Islam',
       content: 'What does Islam truly mean? What are its core beliefs, values, and traditions? Our knowledgeable chat moderators are here to provide insights and answer your questions about the fundamental aspects of Islam.',
-      image: 'src/images/hero2.jpg'
+      image: '/images/hero2.jpg'
     },
     {
       id: 3,
       title: 'Becoming A Muslim',
       content: 'Interested in embracing Islam? Our live chat offers guidance for individuals considering conversion. Learn about the steps to becoming a Muslim, the significance of the Shahada, and how to begin your spiritual journey.',
-      image: 'src/images/mostpopular.jpeg'
+      image: '/images/mostpopular.jpeg'
     },
     {
       id: 4,
       title: 'Engage In Enlightening Conversations',
       content: 'Join our vibrant community where thought-provoking conversations await. Connect with others who share your curiosity, ask questions, and engage in meaningful discussions about Islam and spirituality.',
-      image: 'src/images/hero.jpeg'
+      image: '/images/hero.jpeg'
     },
     {
       id: 5,
       title: 'Facts And Information',
       content: 'Access accurate and insightful information about Islam. From basic concepts to in-depth analyses, our platform provides resources to help you understand Islam better and make informed decisions.',
-      image: 'src/images/hero2.jpg'
+      image: '/images/hero2.jpg'
     },
     {
       id: 6,
       title: 'Why Convert To Islam?',
       content: 'Discover the reasons why millions have chosen to embrace Islam. Explore personal stories of faith, transformation, and the peace that comes with submitting to the will of Allah.',
-      image: 'src/images/mostpopular.jpeg'
+      image: '/images/mostpopular.jpeg'
     },
     {
       id: 7,
       title: 'Conclusion',
       content: 'Your journey to understanding Islam begins here. We invite you to explore, ask questions, and engage in conversations that will help you discover the beauty and truth of Islam. Start your journey today.',
-      image: 'src/images/hero.jpeg'
+      image: '/images/hero.jpeg'
     }
   ];
 
@@ -65,7 +65,7 @@ export default function ChatNow() {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-brandBlue to-brandGold">
         <div className="absolute inset-0 opacity-100">
           <img 
-            src="src/images/hero.jpeg" 
+            src="/images/hero.jpeg" 
             alt="Background" 
             className="w-full h-full object-cover blur-sm"
           />
