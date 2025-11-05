@@ -1,16 +1,26 @@
 import { Mail, MapPin, Phone, Send, MessageCircle } from 'lucide-react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { supabase, ContactSubmission } from '../lib/supabase';
+import Select from 'react-select';
+import countryList from 'react-select-country-list';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 
 export default function Contact() {
-  const [formData, setFormData] = useState<ContactSubmission>({
+  type ContactFormData = ContactSubmission & { country: string | null; phone: string | null };
+
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     subject: '',
     message: '',
+    country: null,
+    phone: null,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const countryOptions = useMemo(() => countryList().getData(), []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -25,12 +35,20 @@ export default function Contact() {
     setSubmitStatus('idle');
 
     try {
-      const { error } = await supabase.from('contact_submissions').insert([formData]);
+      // Insert only columns that exist in the DB schema
+      const payload: ContactSubmission = {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      };
+
+      const { error } = await supabase.from('contact_submissions').insert([payload]);
 
       if (error) throw error;
 
       setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: '', email: '', subject: '', message: '', country: null, phone: null });
 
       setTimeout(() => {
         setSubmitStatus('idle');
@@ -47,7 +65,7 @@ export default function Contact() {
     <div className="min-h-screen bg-gray-50 pt-24">
       <div className="relative text-white py-16 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="src/images/hero2.jpg" alt="Background" className="w-full h-full object-cover" />
+          <img src="/images/hero2.jpg" alt="Background" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-br from-brandBlue/90 to-brandGold/90"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,6 +132,35 @@ export default function Contact() {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent outline-none"
                     placeholder="john@example.com"
                   />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2"> Country</label>
+                    <Select
+                      options={countryOptions}
+                      classNamePrefix="country-select"
+                      isSearchable
+                      placeholder="Select a country..."
+                      value={countryOptions.find((o) => o.label === formData.country) || null}
+                      onChange={(option: any) =>
+                        setFormData({ ...formData, country: option ? option.label : null })
+                      }
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                    <PhoneInput
+                      country={undefined}
+                      enableSearch
+                      value={formData.phone || ''}
+                      onChange={(value) => setFormData({ ...formData, phone: value || null })}
+                      inputClass="!w-full !py-3 !pl-12 !pr-4 !border !border-gray-300 !rounded-lg !focus:ring-2 !focus:ring-brandBlue !focus:border-transparent !outline-none"
+                      containerClass="!w-full"
+                      buttonClass="!border-gray-300 !rounded-l-lg"
+                      searchPlaceholder="Search for a country"
+                    />
+                  </div>
                 </div>
 
                 <div>
