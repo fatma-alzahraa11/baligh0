@@ -7,6 +7,7 @@ import Library from './pages/Library';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import ChatNow from './pages/ChatNow';
+import Volunteer from './pages/Volunteer';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('chatnow');
@@ -106,6 +107,8 @@ function App() {
         return <About />;
       case 'contact':
         return <Contact />;
+      case 'volunteer':
+        return <Volunteer />;
       default:
         return <ChatNow />;
     }
@@ -124,7 +127,7 @@ function App() {
       <main className="min-h-screen">
         {renderPage()}
       </main>
-      <Footer />
+      <Footer onNavigate={setCurrentPage} />
     </div>
   );
 }
