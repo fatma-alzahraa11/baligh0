@@ -1,4 +1,4 @@
-import { MessageCircle, Bot } from 'lucide-react';
+import {Bot } from 'lucide-react';
 
 export default function ChatNow() {
   // WhatsApp Icon SVG
@@ -19,113 +19,92 @@ export default function ChatNow() {
       id: 1,
       title: 'Introduction',
       content: 'Welcome to a welcoming space for exploring Islam through live chat. Whether you\'re curious about the faith, considering conversion, or seeking to learn more, our platform provides a supportive environment for your journey.',
-      image: '/images/hero.jpeg'
+      image: '/images/Introduction.jpeg'
     },
     {
       id: 2,
       title: 'Understanding Islam',
       content: 'What does Islam truly mean? What are its core beliefs, values, and traditions? Our knowledgeable chat moderators are here to provide insights and answer your questions about the fundamental aspects of Islam.',
-      image: '/images/hero2.jpg'
+      image: '/images/understanding.jpg'
     },
     {
       id: 3,
       title: 'Becoming A Muslim',
       content: 'Interested in embracing Islam? Our live chat offers guidance for individuals considering conversion. Learn about the steps to becoming a Muslim, the significance of the Shahada, and how to begin your spiritual journey.',
-      image: '/images/mostpopular.jpeg'
+      image: '/images/becomaingMusluim.jpg'
     },
     {
       id: 4,
       title: 'Engage In Enlightening Conversations',
       content: 'Join our vibrant community where thought-provoking conversations await. Connect with others who share your curiosity, ask questions, and engage in meaningful discussions about Islam and spirituality.',
-      image: '/images/hero.jpeg'
+      image: '/images/Engage.jpg'
     },
     {
       id: 5,
       title: 'Facts And Information',
       content: 'Access accurate and insightful information about Islam. From basic concepts to in-depth analyses, our platform provides resources to help you understand Islam better and make informed decisions.',
-      image: '/images/hero2.jpg'
+      image: '/images/FactsandInformation.jpg'
     },
     {
       id: 6,
       title: 'Why Convert To Islam?',
       content: 'Discover the reasons why millions have chosen to embrace Islam. Explore personal stories of faith, transformation, and the peace that comes with submitting to the will of Allah.',
-      image: '/images/mostpopular.jpeg'
+      image: '/images/WhyConvert toIslam.jpg'
     },
     {
       id: 7,
       title: 'Conclusion',
       content: 'Your journey to understanding Islam begins here. We invite you to explore, ask questions, and engage in conversations that will help you discover the beauty and truth of Islam. Start your journey today.',
-      image: '/images/hero.jpeg'
+      image: '/images/Conclusion.jpg'
     }
   ];
 
   return (
     <div className="min-h-screen bg-white pt-24">
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-brandBlue to-brandGold">
-        <div className="absolute inset-0 opacity-100">
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
           <img 
-            src="/images/hero.jpeg" 
-            alt="Background" 
-            className="w-full h-full object-cover blur-sm"
+            src="/images/chatPage.jpg" 
+            alt="Background Mosque" 
+            className="w-full h-full object-cover"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/0"></div>
         
-        {/* Decorative Elements */}
-        <div className="absolute left-10 top-20 opacity-20">
-          <div className="w-16 h-16 bg-white/10 rounded-lg backdrop-blur-sm flex items-center justify-center mb-4">
-            <MessageCircle className="h-8 w-8 text-white" />
-          </div>
-          <div className="w-16 h-16 bg-white/10 rounded-lg backdrop-blur-sm flex items-center justify-center mb-4">
-            <MessageCircle className="h-8 w-8 text-white" />
-          </div>
-          <div className="w-16 h-16 bg-white/10 rounded-lg backdrop-blur-sm flex items-center justify-center">
-            <MessageCircle className="h-8 w-8 text-white" />
-          </div>
-        </div>
-
-        <div className="absolute right-10 top-20 opacity-20">
-          <div className="w-16 h-16 bg-white/10 rounded-lg backdrop-blur-sm flex items-center justify-center mb-4">
-            <MessageCircle className="h-8 w-8 text-white" />
-          </div>
-          <div className="w-16 h-16 bg-white/10 rounded-lg backdrop-blur-sm flex items-center justify-center mb-4">
-            <MessageCircle className="h-8 w-8 text-white" />
-          </div>
-          <div className="w-16 h-16 bg-white/10 rounded-lg backdrop-blur-sm flex items-center justify-center">
-            <MessageCircle className="h-8 w-8 text-white" />
-          </div>
-        </div>
-        
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-8">
-            <h1 className="heading-font text-5xl md:text-7xl mb-6 leading-tight text-white" data-aos="fade-up">
-              Explore Islam | Chat & Decide
+          <div className="mb-12">
+            <h1 className="heading-font text-5xl md:text-7xl lg:text-8xl mb-6 leading-tight" data-aos="fade-up">
+              <span className="text-[#DBAC42] drop-shadow-2xl italic">Discover</span>{' '}
+              <span className="text-blue-600 drop-shadow-2xl italic">Islam</span>
             </h1>
-            <p className="text-lg md:text-2xl text-gray-200 max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="100">
-              Learn about Islam through live chat. Ask questions, discover the truth, and connect with friendly guides.
+            <p className="text-x1 md:text-2xl lg:text-2xl font-bold text-white font-sans max-w-3xl mx-auto mb-4" data-aos="fade-up" data-aos-delay="100">
+              The Answer You Haven't Found Yet
+            </p>
+            <p className="text-x1 md:text-2xl lg:text-3xl font-bold text-white font-sans max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="150">
+              Stop Searching. Start Living
+            </p>
+            <p className="text-xl md:text-2xl lg:text-3xl font-bold text-white font-sans mb-8" data-aos="fade-up" data-aos-delay="200">
+              Chat Now
             </p>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-row gap-6 justify-center items-center" data-aos="zoom-in" data-aos-delay="250">
             <button
-              className="group relative w-16 h-16 rounded-full bg-[#25D366] hover:bg-[#20BA5A] text-white transition-all transform hover:scale-105 hover:shadow-2xl shadow-xl flex items-center justify-center"
-              data-aos="zoom-in"
+              className="group relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#25D366] hover:bg-[#20BA5A] text-white transition-all transform hover:scale-110 hover:shadow-2xl shadow-xl flex items-center justify-center"
             >
               <WhatsAppIcon />
             </button>
             <button
-              className="group relative w-16 h-16 rounded-full bg-[#0084FF] hover:bg-[#0073E6] text-white transition-all transform hover:scale-105 hover:shadow-2xl shadow-xl flex items-center justify-center"
-              data-aos="zoom-in" data-aos-delay="100"
+              className="group relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#0084FF] hover:bg-[#0073E6] text-white transition-all transform hover:scale-110 hover:shadow-2xl shadow-xl flex items-center justify-center"
             >
               <MessengerIcon />
             </button>
             <button
-              className="group relative w-16 h-16 rounded-full bg-[#dbac42] hover:bg-[#c99a38] text-white transition-all transform hover:scale-105 hover:shadow-2xl shadow-xl flex items-center justify-center"
-              data-aos="zoom-in" data-aos-delay="200"
+              className="group relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#DBAC42] hover:bg-[#c99a38] text-white transition-all transform hover:scale-110 hover:shadow-2xl shadow-xl flex items-center justify-center"
             >
               <Bot className="h-8 w-8" />
-            </button>
+              </button>
           </div>
         </div>
       </section>
@@ -185,4 +164,3 @@ export default function ChatNow() {
     </div>
   );
 }
-
