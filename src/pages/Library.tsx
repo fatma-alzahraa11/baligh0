@@ -1,6 +1,7 @@
 import { Video, Music, FileText, Book, BookOpen, Search, Play, Clock, Share2, Eye, User } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { supabase, LibraryItem } from '../lib/supabase';
+import ShareModal from '../components/ShareModal';
 
 export default function Library() {
   const [items, setItems] = useState<LibraryItem[]>([]);
@@ -15,6 +16,9 @@ export default function Library() {
   // UI pagination over filtered items (1-based for the UI)
   const [uiPage, setUiPage] = useState<number>(1);
   const [hasMore, setHasMore] = useState<boolean>(true);
+  const [shareOpen, setShareOpen] = useState(false);
+  const [shareUrl, setShareUrl] = useState<string>('');
+  const [shareTitle, setShareTitle] = useState<string>('');
 
   useEffect(() => {
     // initial load
@@ -129,7 +133,7 @@ export default function Library() {
             className={className}
           />
         ) : (
-          <img src={poster || '/images/hero2.jpg'} alt="preview" className={className} loading="lazy" />
+          <img src={poster || '/images/hero2.png'} alt="preview" className={className} loading="lazy" />
         )}
       </div>
     );
@@ -436,6 +440,12 @@ export default function Library() {
                           onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D77A52'} 
                           onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#E6885F'}
                           title="Share"
+                          onClick={() => {
+                            const url = item.url || (typeof window !== 'undefined' ? window.location.href : '');
+                            setShareUrl(url);
+                            setShareTitle(item.title);
+                            setShareOpen(true);
+                          }}
                         >
                           <Share2 className="h-4 w-4" />
                           <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-xs text-white bg-gray-800 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
@@ -610,6 +620,7 @@ export default function Library() {
           </div>
         )}
       </div>
+      <ShareModal isOpen={shareOpen} onClose={() => setShareOpen(false)} shareUrl={shareUrl} title={shareTitle} />
     </div>
   );
 }
