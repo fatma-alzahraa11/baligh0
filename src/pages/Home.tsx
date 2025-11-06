@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
 import { supabase, Question, LibraryItem } from '../lib/supabase';
+import ShareModal from '../components/ShareModal';
 
 interface HomeProps {
   onNavigate: (page: string) => void;
@@ -30,6 +31,9 @@ export default function Home({ onNavigate }: HomeProps) {
   const [questionTab, setQuestionTab] = useState<string>('How?');
   const [videoCarouselIndex, setVideoCarouselIndex] = useState(0);
   const [hoveredBookId, setHoveredBookId] = useState<string | null>(null);
+  const [shareOpen, setShareOpen] = useState(false);
+  const [shareUrl, setShareUrl] = useState<string>('');
+  const [shareTitle, setShareTitle] = useState<string>('');
   const videoCarouselRef = useRef<HTMLDivElement>(null);
 
   const questionTabs = ['What?', 'Where?', 'When?', 'Why?', 'How?'];
@@ -148,20 +152,19 @@ export default function Home({ onNavigate }: HomeProps) {
     <div className="min-h-screen bg-white pt-24">
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-brandBlue to-brandGold">
-        <div className="absolute inset-0 opacity-100">
+        <div className="absolute inset-0">
           <img 
-            src="/images/hero.jpeg" 
+            src="/images/hero.png" 
             alt="Background" 
-            className="w-full h-full object-cover blur-sm"
+            className="w-full h-full object-cover"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/0"></div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-8">
             <h1 className="heading-font text-5xl md:text-7xl mb-6 leading-tight" data-aos="fade-up">
-              <span className="text-brandBlue">Discover</span>{' '}
-              <span className="text-brandGold">And Learn</span>
+              <span className="text-blue-400 drop-shadow-2xl">Discover</span>{' '}
+              <span className="text-yellow-400 drop-shadow-2xl">And Learn</span>
             </h1>
             <p className="text-lg md:text-2xl text-gray-200 max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="100">
               Your gateway to authentic Islamic knowledge through interactive content, 
@@ -204,7 +207,7 @@ export default function Home({ onNavigate }: HomeProps) {
       {/* Most Popular Questions Section */}
       <section className="py-20 bg-white" data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="heading-font text-3xl md:text-5xl text-gray-900 mb-8 flex items-center gap-3">
+          <h2 className="heading-font text-3xl md:text-5xl text-gray-700 mb-8 flex items-center gap-3">
             <MessageCircle className="h-8 w-8 text-brandBlue" />
             Most Popular Questions
           </h2>
@@ -233,9 +236,8 @@ export default function Home({ onNavigate }: HomeProps) {
                 key={q.id}
                 className="group relative card-glass rounded-2xl overflow-hidden hover-lift"
               >
-                <div className="relative h-64 bg-gradient-to-br from-brandBlue/60 to-brandBlue overflow-hidden">
+                <div className="relative h-64 bg-gradient-to-br from-brandBlue to-brandBlue overflow-hidden">
                   <div className="absolute inset-0 bg-[url('https://chatanddecide.com/assets/media/what-are-the-five-pillars-of-islam157_carousalThumb.jpg')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500"></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4">
                     <h3 className="text-2xl font-bold text-white mb-2">{q.question}</h3>
                   </div>
@@ -325,7 +327,7 @@ export default function Home({ onNavigate }: HomeProps) {
       <section className="py-20 bg-white" data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-12">
-            <h2 className="heading-font text-3xl md:text-5xl text-gray-900 flex items-center gap-3">
+            <h2 className="heading-font text-3xl md:text-5xl text-gray-700 flex items-center gap-3">
               <Video className="h-8 w-8 text-brandBlue" />
               Most Popular Shorts
             </h2>
@@ -357,7 +359,7 @@ export default function Home({ onNavigate }: HomeProps) {
                     </div>
                   )}
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                <div className="absolute inset-0 flex flex-col justify-end p-4">
                   <div className="mb-2">
                     <div className="flex items-center gap-2 mb-2">
                       <BookOpen className="h-4 w-4 text-brandGold" />
@@ -432,8 +434,8 @@ export default function Home({ onNavigate }: HomeProps) {
                         <Video className="h-16 w-16 text-gray-600" />
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                      <div className="bg-white/90 rounded-full p-4 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="bg-white rounded-full p-4 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
                         <Play className="h-8 w-8 text-brandBlue fill-brandBlue" />
                       </div>
                     </div>
@@ -486,7 +488,7 @@ export default function Home({ onNavigate }: HomeProps) {
       <section className="py-20 bg-white" data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-12">
-            <h2 className="heading-font text-3xl md:text-5xl text-gray-900 flex items-center gap-3">
+            <h2 className="heading-font text-3xl md:text-5xl text-gray-700 flex items-center gap-3">
               <FileText className="h-8 w-8 text-brandBlue" />
               Most Popular Articles
             </h2>
@@ -520,7 +522,7 @@ export default function Home({ onNavigate }: HomeProps) {
                   )}
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">{article.title}</h3>
+                  <h3 className="text-xl font-semibold text-gray-700 mb-3 line-clamp-2">{article.title}</h3>
                   <p className="text-gray-600 line-clamp-4 mb-4">{article.description}</p>
                   <button className="text-brandBlue hover:text-brandBlue/90 font-semibold flex items-center gap-2">
                     Read Article
@@ -542,7 +544,7 @@ export default function Home({ onNavigate }: HomeProps) {
       <section className="py-20 bg-white" data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-12">
-            <h2 className="heading-font text-3xl md:text-5xl text-gray-900 flex items-center gap-3">
+            <h2 className="heading-font text-3xl md:text-5xl text-gray-700 flex items-center gap-3">
               <BookOpen className="h-8 w-8 text-brandBlue" />
               Most Popular Books
             </h2>
@@ -653,7 +655,7 @@ export default function Home({ onNavigate }: HomeProps) {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 hover:text-brandBlue cursor-pointer line-clamp-2 leading-tight">
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-700 mb-2 hover:text-brandBlue cursor-pointer line-clamp-2 leading-tight">
                       {book.title}
                     </h3>
 
@@ -681,6 +683,12 @@ export default function Home({ onNavigate }: HomeProps) {
                         onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D77A52'} 
                         onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#E6885F'}
                         title="Share"
+                        onClick={() => {
+                          const url = book.url || (typeof window !== 'undefined' ? window.location.href : '');
+                          setShareUrl(url);
+                          setShareTitle(book.title);
+                          setShareOpen(true);
+                        }}
                       >
                         <Share2 className="h-4 w-4" />
                         <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-xs text-white bg-gray-800 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
@@ -725,6 +733,8 @@ export default function Home({ onNavigate }: HomeProps) {
           )}
         </div>
       </section>
+
+      <ShareModal isOpen={shareOpen} onClose={() => setShareOpen(false)} shareUrl={shareUrl} title={shareTitle} />
 
       {/* Mobile unified CTA */}
       <div className="px-4 sm:px-6 lg:px-8 md:hidden pb-16" data-aos="fade-up">
