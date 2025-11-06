@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -12,6 +12,7 @@ import Volunteer from './pages/Volunteer';
 function App() {
   const [currentPage, setCurrentPage] = useState('chatnow');
   const [isLoading, setIsLoading] = useState(true);
+  const transitionTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 900);
@@ -93,10 +94,31 @@ function App() {
     return () => observer.disconnect();
   }, [currentPage]);
 
+  const handleNavigate = (nextPage: string) => {
+    if (nextPage === currentPage) return;
+    setIsLoading(true);
+    setCurrentPage(nextPage);
+    if (transitionTimerRef.current) {
+      clearTimeout(transitionTimerRef.current);
+    }
+    transitionTimerRef.current = window.setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  };
+
+  useEffect(() => {
+    return () => {
+      if (transitionTimerRef.current) {
+        clearTimeout(transitionTimerRef.current);
+      }
+    };
+  }, []);
+
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
-        return <Home onNavigate={setCurrentPage} />;
+        return <Home onNavigate={handleNavigate} />;
       case 'chatnow':
         return <ChatNow />;
       case 'questions':
@@ -123,11 +145,11 @@ function App() {
           </div>
         </div>
       )}
-      <Navigation currentPage={currentPage} onNavigate={setCurrentPage} />
+      <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
       <main className="min-h-screen">
         {renderPage()}
       </main>
-      <Footer onNavigate={setCurrentPage} />
+      <Footer onNavigate={handleNavigate} />
     </div>
   );
 }
